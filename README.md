@@ -1,6 +1,6 @@
 # Advent of Code 2023 Solutions
 
-##About Advent of Code
+## About Advent of Code
 Advent of Code is an annual December event where programmers sharpen their coding skills through a series of daily programming challenges. This repository contains my solutions for the Advent of Code 2023. Each solution is implemented in Go, providing an excellent opportunity to delve into Go's capabilities and features.
 
 ## Repository Structure
