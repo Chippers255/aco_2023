@@ -66,12 +66,10 @@ func getFirstLastP2(s string) (string, string) {
 			last, _ = dictionary[sub]
 		}
 	}
-	fmt.Println(first, last)
 	return first, last
-
 }
 
-func readInputFileP1(filename string) []string {
+func readInputFile(filename string) []string {
 	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
@@ -87,8 +85,8 @@ func readInputFileP1(filename string) []string {
 	return lines
 }
 
-func partOne() {
-	lines := readInputFileP1("input.txt")
+func PartOne(file string) int {
+	lines := readInputFile(file)
 	var numbers []int
 	for _, line := range lines {
 		first, last := getFirstLastP1(line)
@@ -102,27 +100,11 @@ func partOne() {
 	for _, num := range numbers {
 		sum += num
 	}
-	fmt.Println(sum)
+	return sum
 }
 
-func readInputFileP2(filename string) []string {
-	file, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	var lines []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-
-	return lines
-}
-
-func partTwo() {
-	lines := readInputFileP2("input.txt")
+func PartTwo(file string) int {
+	lines := readInputFile(file)
 	var numbers []int
 	for _, line := range lines {
 		first, last := getFirstLastP2(line)
@@ -136,10 +118,17 @@ func partTwo() {
 	for _, num := range numbers {
 		sum += num
 	}
-	fmt.Println(sum)
+	return sum
 }
 
 func main() {
-	//partOne()
-	partTwo()
+	p1Sample := PartOne("sample_input_1.txt")
+	p1Input := PartOne("input.txt")
+	fmt.Println(p1Sample)
+	fmt.Println(p1Input)
+
+	p2Sample := PartTwo("sample_input_2.txt")
+	p2Input := PartTwo("input.txt")
+	fmt.Println(p2Sample)
+	fmt.Println(p2Input)
 }
