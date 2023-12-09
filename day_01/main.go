@@ -10,6 +10,22 @@ import (
 	"unicode"
 )
 
+func getFileLines(filename string) []string {
+	file, err := os.Open(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+
+	return lines
+}
+
 func getFirstLastP1(s string) (string, string) {
 	var first, last string
 	foundFirst := false
@@ -69,24 +85,8 @@ func getFirstLastP2(s string) (string, string) {
 	return first, last
 }
 
-func readInputFile(filename string) []string {
-	file, err := os.Open(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	var lines []string
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-
-	return lines
-}
-
 func PartOne(file string) int {
-	lines := readInputFile(file)
+	lines := getFileLines(file)
 	var numbers []int
 	for _, line := range lines {
 		first, last := getFirstLastP1(line)
@@ -104,7 +104,7 @@ func PartOne(file string) int {
 }
 
 func PartTwo(file string) int {
-	lines := readInputFile(file)
+	lines := getFileLines(file)
 	var numbers []int
 	for _, line := range lines {
 		first, last := getFirstLastP2(line)

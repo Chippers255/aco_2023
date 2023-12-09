@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func readInputFile(filename string) []string {
+func getFileLines(filename string) []string {
 	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
@@ -28,7 +28,7 @@ func readInputFile(filename string) []string {
 func PartOne(file string) int {
 	const maxRed, maxGreen, maxBlue = 12, 13, 14
 
-	games := readInputFile(file)
+	games := getFileLines(file)
 	sumOfIDs := 0
 
 	for _, game := range games {
@@ -69,7 +69,7 @@ func PartOne(file string) int {
 }
 
 func PartTwo(file string) int {
-	games := readInputFile(file)
+	games := getFileLines(file)
 	sumOfIDs := 0
 
 	for _, game := range games {
