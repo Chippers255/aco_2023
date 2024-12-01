@@ -6,6 +6,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"year2024/internal/utils"
 )
 
 func readInputFile(filePath string) ([]int, []int, error) {
@@ -30,22 +32,6 @@ func readInputFile(filePath string) ([]int, []int, error) {
 	return l1, l2, nil
 }
 
-func sumList(list []int) int {
-	sum := 0
-	for _, v := range list {
-		sum += v
-	}
-	return sum
-}
-
-func absDiff(a, b int) int {
-	diff := a - b
-	if diff < 0 {
-		diff = -diff
-	}
-	return diff
-}
-
 func Part1(input string) (int, error) {
 	l1, l2, err := readInputFile(input)
 	if err != nil {
@@ -57,9 +43,9 @@ func Part1(input string) (int, error) {
 
 	diff := make([]int, len(l1))
 	for i := range l1 {
-		diff[i] = absDiff(l1[i], l2[i])
+		diff[i] = utils.AbsDiff(l1[i], l2[i])
 	}
-	sum := sumList(diff)
+	sum := utils.Sum(diff)
 
 	return sum, nil
 }
