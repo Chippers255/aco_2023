@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"year2024/internal/aoc/day01"
+	"year2024/internal/aoc/day02"
 
 	"github.com/spf13/cobra"
 )
@@ -47,6 +48,8 @@ func runDay(day int, input string) error {
 	switch day {
 	case 1:
 		return day01.Run(input)
+	case 2:
+		return day02.Run(input)
 	default:
 		return fmt.Errorf("day %d not implemented", day)
 	}
